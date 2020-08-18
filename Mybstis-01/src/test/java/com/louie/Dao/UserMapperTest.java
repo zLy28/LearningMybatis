@@ -1,6 +1,7 @@
 package com.louie.Dao;
 
 import com.louie.pojo.Student;
+import com.louie.pojo.Teacher;
 import com.louie.pojo.User;
 import com.louie.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -81,9 +82,20 @@ public class UserMapperTest {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
         List<Student> students = mapper.getStudent();
-        for (Student student:students
-             ) {
+        for (Student student : students) {
             System.out.println(student);
+        }
+        sqlSession.close();
+    }
+
+    @Test
+    public void getTeacherTest() {
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        TeacherMapper mapper = sqlSession.getMapper(TeacherMapper.class);
+        List<Teacher> teachers = mapper.getTeacher();
+        for (Teacher teacher:teachers
+             ) {
+            System.out.println(teacher);
         }
         sqlSession.close();
     }
